@@ -1,0 +1,7 @@
+.idea
+.DS_Store
+composer.lock
+vendor
+tests/tmp/*
+tests/coverage.html
+tests/results.txt

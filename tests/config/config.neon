@@ -1,0 +1,21 @@
+# B4nan test config file
+
+parameters:
+	dirs:
+		imageCache: '%tempDir%/img'
+		storage: '%tempDir%/img'
+
+application:
+	scanDirs: false
+
+services:
+	- B4nan\Application\Parameters(@container::getParameters())
+	- B4nan\Templates\Helpers
+	- B4nan\Localization\Translator(%tempDir%, 'en', @cacheStorage)
+
+console:
+	url: 'http://localhost'
+
+extensions:
+	console: Kdyby\Console\DI\ConsoleExtension
+	annotations: Kdyby\Annotations\DI\AnnotationsExtension

@@ -1,0 +1,47 @@
+#!/bin/bash
+
+echo checking php syntax
+./../vendor/bin/parallel-lint \
+    --exclude ./../vendor \
+    --exclude ./../temp \
+    --exclude ./../log \
+    ./..
+
+rm -rf temp/*
+
+if [ "$1" == "cov" -a -f coverage.dat ]
+then
+    rm coverage.dat
+fi
+
+if [ "$1" == "cov" ]
+then
+	./../vendor/bin/tester \
+		-c ./config/php.ini \
+		--coverage "coverage.html" \
+		--coverage-src ./../src
+elif [ "$1" == "tap" ]
+then
+	./../vendor/bin/tester \
+	 	-p php \
+	 	-j 30 \
+	 	-c ./config/php.server.ini \
+	 	-s . \
+		--coverage "coverage.html" \
+		--coverage-src ./../src \
+	 	-o tap | tee results.txt
+	if grep -q 'not ok' results.txt
+	then
+		rm -rf temp/*
+		rm results.txt
+		echo "FAILED"
+		exit 1
+	else
+		grep '<h1>' coverage.html | sed 's#<h1>##' | sed 's#</h1>##' | sed 's#&nbsp;# #'
+	fi
+	rm results.txt
+else
+	./../vendor/bin/tester -j 30 -c ./config/php.ini -s .
+fi
+
+rm -rf temp/*
