@@ -16,7 +16,6 @@
 	},
 	"minimum-stability": "stable",
 	"require": {
-		"bargency/translator": "@dev",
 		"latte/latte": "2.3.*",
 		"tracy/tracy": "2.3.*",
 		"nette/http": "2.3.*",
@@ -28,8 +27,6 @@
 		"nette/utils": "2.3.*"
 	},
 	"require-dev": {
-		"bargency/security": "@dev",
-		"bargency/doctrine": "@dev",
 		"nette/tester": "@dev",
 		"kdyby/tester-extras": "@dev",
 		"jakub-onderka/php-parallel-lint": "0.*",
