@@ -13,9 +13,9 @@ services:
 	- B4nan\Templates\Helpers
 	- B4nan\Localization\Translator(%tempDir%, 'en', @cacheStorage)
 
-console:
-	url: 'http://localhost'
+#console:
+#	url: 'http://localhost'
 
-extensions:
-	console: Kdyby\Console\DI\ConsoleExtension
-	annotations: Kdyby\Annotations\DI\AnnotationsExtension
+#extensions:
+#	console: Kdyby\Console\DI\ConsoleExtension
+#	annotations: Kdyby\Annotations\DI\AnnotationsExtension

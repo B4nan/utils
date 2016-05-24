@@ -27,6 +27,7 @@
 		"nette/utils": "2.3.*"
 	},
 	"require-dev": {
+		"b4nan/translator": "@dev",
 		"nette/tester": "@dev",
 		"kdyby/tester-extras": "@dev",
 		"jakub-onderka/php-parallel-lint": "0.*",
