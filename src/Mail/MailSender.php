@@ -46,10 +46,10 @@ class MailSender
 		if ($body) {
 			$latte = $this->latteFactory->create();
 			$latte->setLoader(new StringLoader);
+			$latte->addProvider('uiControl', $this->linkGenerator);
 			UIMacros::install($latte->getCompiler());
 
 			$params = (array) $params; // can be NULL
-			$params['_control'] = $this->linkGenerator;
 
 			$html = $latte->renderToString($body, $params);
 			$mail->setHtmlBody($html);

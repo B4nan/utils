@@ -37,11 +37,11 @@ class HelpersTest extends TestCase
 		/** @var Template $tpl */
 		$tpl = $factory->createTemplate();
 		$filters = $tpl->getLatte()->getFilters();
-		Assert::count(39, $filters);
+		Assert::count(41, $filters);
 		Assert::false(isset($filters['bool']));
 		$this->helpers->register($tpl);
 		$filters = $tpl->getLatte()->getFilters();
-		Assert::count(59, $filters);
+		Assert::count(61, $filters);
 		Assert::true(isset($filters['bool']));
 	}
 
