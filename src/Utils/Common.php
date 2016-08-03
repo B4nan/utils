@@ -172,12 +172,13 @@ final class Common extends Object
 	/**
 	 * covert dashed-text to pascalCase
 	 * @param string $s
+	 * @param string $delimiter
 	 * @return string
 	 */
-	public static function path2action($s)
+	public static function path2action($s, $delimiter = '_')
 	{
 		$s = strtolower($s);
-		$s = preg_replace('#-(?=[a-z])#', ' ', $s);
+		$s = preg_replace("#$delimiter(?=[a-z])#", ' ', $s);
 		$s = substr(ucwords('x' . $s), 1);
 		$s = str_replace(' ', '', $s);
 		return $s;
